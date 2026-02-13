@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | WEDLOC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white">
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+
+      <div class="card shadow">
+        <div class="card-body">
+        <a class="text-decoration-none" href="index.html"><B>X</B></a>
+        
+          <h3 class="text-center mb-4">Login to WEDLOC</h3>
+
+        <form class="validation" novalidate>  
+
+            <div class="mb-3">
+              <label class="form-label">Username / Email</label>
+              <input type="text" class="form-control" required>
+              <div class="invalid-feedback">
+                Please enter your username or email.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-control" required>
+              <div class="invalid-feedback">
+                Please enter your password.
+              </div>
+            </div>
+
+            <button class="btn btn-primary w-100">LOGIN</button>
+
+            <hr>
+            <a class="text-decoration-none mt-3" href="#"><center>Forgot password?</center></a>
+
+            <p class="text-center mt-3">
+              Don't have an account? 
+              <a class="text-decoration-none" href="registration.html">Register here</a>
+            </p>
+
+        </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  'use strict'
+  const forms = document.querySelectorAll('.validation')
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

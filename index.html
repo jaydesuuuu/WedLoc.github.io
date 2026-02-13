@@ -2,228 +2,130 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AboutMyWeather | Weather Latest Updates</title>
+  <title>WEDLOC | Student Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 </head>
+
 <body>
 
-<!-- HEADER KO -->
-  <header>
-    <div class="logo">WED<span>LOC</span></div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 sticky-top">
+  <div class="container">
 
-    <nav>
-      <a href="#home">HOME</a>
-      <a href="#weather-dashboard">WEATHER</a>
-      <a href="#about">ABOUT</a>
-      <a href="#service">SERVICE</a>
-      <a href="#contact">CONTACT</a>
-      <button class="login-btn" onclick="openLoginModal()">Login</button>
-    </nav>
-  </header>
+    <a class="navbar-brand fw-bold" href="#">WEDLOC</a>
 
- <section id="home" class="hero">
-  <div class="hero-content">
-
-    <!-- LEFT IMAGE WITH ANIMATION -->
-    <div class="hero-image">
-      <img src="images/img3.jpg" alt="Weather Image">
-    </div>
-
-    <!-- RIGHT TEXT -->
-    <div class="hero-text">
-      <h1>HI<span> WE ARE HERE TO UPDATE YOU</span></h1>
-      <p>
-       The latest weather updates and conditions across different locations to help you plan your trips better. 
-       Stay informed about rain, heat, or possible travel disruptions for a safer and smoother commute.
-      </p>
-      <button>JOIN US</button>
-    </div>
-  </div>
-  </section>
-
-  <!-- WEATHER DASHBOARD -->
-  <section id="weather-dashboard">
-    <h2>🌤️ Weekly Weather Updates</h2>
-
-    <div class="weather-container">
-
-      <!-- CURRENT WEATHER -->
-      <div class="weather-card current-weather">
-        <div id="clock"></div>
-        <h3 id="cityName">Manila, PH</h3>
-        <h1><span id="temp">--</span>°C</h1>
-        <p id="condition">Loading...</p>
-        <p>🌬 Wind: <span id="wind">--</span> km/h</p>
-        <p>💧 Humidity: <span id="humidity">--</span>%</p>
-        <p id="precipitation">🌧 Precipitation: --</p>
-        <p id="typhoonAlert" class="typhoon-alert" style="display:none;">⚠️ Typhoon Alert!</p>
-      </div>
-      <!-- WEATHER MAP -->
-      <div class="weather-card map-card">
-          <h3>🗺 FIND YOUR LOCATION</h3>
-          <div id="map" style="width:100%; height:250px; border-radius:12px;"></div>
-      </div>
-      <!-- 7days Forecast-->
-      <div class="weather-card forecast-card">
-        <h3>📅 3-Days Forecast In a Week</h3>
-        <div class="forecast-grid">
-          <div class="forecast-day"><p class="day">Mon</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-          <div class="forecast-day"><p class="day">Tue</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-          <div class="forecast-day"><p class="day">Wed</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-          <div class="forecast-day"><p class="day">Thu</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-          <div class="forecast-day"><p class="day">Fri</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-          <div class="forecast-day"><p class="day">Sat</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-          <div class="forecast-day"><p class="day">Sun</p><p class="icon">☀️</p><p class="temp">--°C</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Seaching Areas -->
-
-  <div class="weather-search">
-      <input type="text" id="cityInput" placeholder="Enter City Name" autocomplete="off">
-      <ul id="suggestions" class="suggestions"></ul>
-      <button onclick="checkWeatherAuth()">Check Weather</button>
-  </div>
-
-  <!-- ABOUT / Needs Update-->
-  <section id="about">
-    <h2>🌦 About Us</h2>
-    <p>This Weather Monitoring System provides real-time weather updates such as
-       temperature, humidity, wind speed, precipitation, and typhoon alerts to support daily decision-making.</p>
-    <p>Our goal is to keep everyone informed about upcoming weather conditions and ensure safety during extreme events.</p>
-  </section>
-
-  <!-- SERVICE -->
-  <section id="service">
-    <h2>Our Services</h2>
-    <ul>
-      <li>Commuters updates</li>
-      <li>Real-Time Weather Monitoring</li>
-      <li>Typhoon & Rain Alerts</li>
-    </ul>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-    <h2>📩 Contact Us</h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <h3>HAVE A QUESTION?<br>Please Contact Us: </h3>
-        <p>📧 Wedloc01@gmail.com</p>
-        <p>📞 +63 912 345 6789</p>
-        <p>📍 Philippines</p>
-        <p>📩 WedLoc_Phillipines</p>
-      </div>
-
-      <form class="contact-form" onsubmit="sendMessage(event)">
-        <input type="text" id="contactName" placeholder="Your Name" required>
-        <input type="email" id="contactEmail" placeholder="Your Email" required>
-        <textarea id="contactMessage" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <div class="social-icons">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-  </section>
-
-<!-- AUTH MODAL -->
-<div id="loginModal" class="modal">
-  <div class="auth-card">
-
-    <button class="close-btn" onclick="closeLoginModal()">✕</button>
-
-    <div class="auth-header">
-      <h2 id="formTitle">Sign in</h2>
-      <p id="formSubtitle">
-        Access your personalized weather dashboard
-      </p>
-    </div>
-
-    <!-- FULL NAME -->
-    <div class="form-group" id="nameGroup" style="display:none">
-      <label>Full Name</label>
-      <input type="text" id="name" placeholder="Juan Dela Cruz">
-    </div>
-
-    <!-- USERNAME -->
-    <div class="form-group" id="usernameGroup" style="display:none">
-      <label>Username</label>
-      <input type="text" id="username" placeholder="juan123">
-    </div>
-
-    <!-- EMAIL -->
-    <div class="form-group">
-      <label>Email address</label>
-      <input type="email" id="email" placeholder="you@email.com">
-    </div>
-
-    <!-- PASSWORD -->
-    <div class="form-group">
-      <label>Password</label>
-      <div class="password-field">
-        <input type="password" id="password" placeholder="••••••••">
-        <span onclick="togglePassword()">Show</span>
-      </div>
-      <small id="passwordStrength"></small>
-    </div>
-
-    <!-- CONFIRM PASSWORD -->
-    <div class="form-group" id="confirmPasswordGroup" style="display:none">
-      <label>Confirm password</label>
-      <input type="password" id="confirmPassword">
-    </div>
-
-    <!-- GENDER -->
-    <div class="form-group" id="genderGroup" style="display:none">
-      <label>Gender</label>
-      <select id="gender">
-        <option value="">Select</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Prefer not to say</option>
-      </select>
-    </div>
-
-    <!-- REMEMBER -->
-    <div class="checkbox-row" id="rememberGroup">
-      <label>
-        <input type="checkbox" id="rememberMe">
-        Remember me
-      </label>
-    </div>
-
-    <!-- TERMS -->
-    <div class="checkbox-row" id="termsGroup" style="display:none">
-      <label>
-        <input type="checkbox" id="terms">
-        I agree to the Terms & Conditions
-      </label>
-    </div>
-
-    <button class="primary-btn" id="submitBtn" onclick="submitForm()">
-      Sign in
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <p class="auth-footer" id="formToggle">
-      Don’t have an account?
-      <span onclick="toggleForm()">Create one</span>
-    </p>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      
+      <ul class="navbar-nav align-items-center">
+
+        <a class="nav-link px-4 active" href="index.html">Home</a>
+        <a class="nav-link px-4" href="about.html">About</a>
+        <a class="nav-link px-4" href="contact.html">Contact</a>
+
+
+        <!-- LOGIN BUTTON -->
+        <li class="nav-item ms-3">
+          <a href="login.html" class="btn btn-outline-light px-3">Login</a>
+        </li>
+
+      </ul>
+    </div>
 
   </div>
-</div>
+</nav>
 
-  <script src="script.js"></script>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="display-4 fw-bold">WEDLOC</h1>
+    <p class="lead">Real-Time Weather & Location Updates for Commuters</p>
+    <a href="registration.html" class="btn btn-light btn-lg mt-3">Explore Now</a>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">WEDLOC SYSTEM</h2>
+      <p class="text-muted">What WEDLOC aims to provide for commuters</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Real-Time Weather Updates</h5>
+            <p class="card-text">
+              Provide accurate and updated weather information to help commuters plan their trips safely.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Location Tracking</h5>
+            <p class="card-text">
+              Deliver reliable location-based data for better navigation and transport decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Safety & Awareness</h5>
+            <p class="card-text">
+              Increase commuter awareness during extreme weather conditions and traffic disruptions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!--Footer-->
+<footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+
+    <p class="mb-2">© 2026 WEDLOC | WEATHER UPDATES AND LOCATION FOR COMMUTERS</p>
+
+    <div class="d-flex justify-content-center gap-3 mt-3">
+
+      <a href="#" class="text-white fs-4">
+        <i class="bi bi-facebook"></i>
+      </a>
+
+      <a href="#" class="text-white fs-4">
+        <i class="bi bi-instagram"></i>
+      </a>
+
+      <a href="#" class="text-white fs-4">
+        <i class="bi bi-tiktok"></i>
+      </a>
+
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
